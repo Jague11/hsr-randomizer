@@ -1,5 +1,6 @@
 import random
 import streamlit as st
+import os
 
 st.set_page_config(page_title="HSR - Randomizer de Equipos", page_icon="⚔️", layout="centered")
 
@@ -99,23 +100,8 @@ h1 {
 </style>
 """, unsafe_allow_html=True)
 
-personajes = [
-    "Yao Guang", "La Dalia", "Cirene", "Dan Hen-PT", "Larganoche",
-    "Céridra", "Hysilens", "Fainón", "Archer", "Saber", "Cífer",
-    "Hyacine", "Anaxa", "Castorice", "Midei", "Tribbie", "TB-Remi",
-    "Aglaea", "Sra.Herta", "Fugue", "Sunday", "Rappa", "Moze",
-    "Lingsha", "Feixiao", "Marzo-Cacería", "Jiaoqiu", "Yunli",
-    "TB - Armonía", "Jade", "Luciérnaga", "Boothill", "Robin",
-    "Gallagher", "Aventurino", "Acheron", "Misha", "Sparkle",
-    "Cisne Negro", "Xueyi", "Dr. Ratio", "Ruan Mei", "Hanya",
-    "Argenti", "Huohuo", "Guinaifen", "Topaz y Conti", "Jingliu",
-    "Fu Xuan", "Dan Hen-IL", "Luka", "Kafka", "Blade", "Yukong",
-    "Luocha", "Silver Wolf", "Bailu", "Yaquinq", "Sushang",
-    "Jing Yuan", "Tignyun", "Qinque", "TB-Conservación", "Hook",
-    "Sampo", "Clara", "Pela", "Natasha", "Gepard", "Serval",
-    "Seele", "Bronya", "Herta", "Asta", "Arlan", "Welt",
-    "Himeko", "Dan Hen", "Marzo-Conservación", "TB - Destrucción"
-]
+with open("personajes.txt", "r", encoding="utf-8") as f:
+    personajes = [linea.strip() for linea in f if linea.strip()]
 
 def random_teams(personajes):
     seleccionados = random.sample(personajes, 8)
